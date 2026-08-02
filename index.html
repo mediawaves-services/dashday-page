@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashday — Dein Tag, klar geordnet</title>
+    <meta
+      name="description"
+      content="Dashday ist eine offline-first To-do-App für iOS und macOS. Chronologisch, ruhig, mit optionalem Sync."
+    />
+    <link rel="canonical" href="https://dashday.io/" />
+    <meta property="og:title" content="Dashday" />
+    <meta property="og:description" content="Dein Tag, klar geordnet. Offline-first To-dos für iOS und macOS." />
+    <meta property="og:url" content="https://dashday.io/" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/">Dashday</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">Über</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Dashday">
+        <div class="hero-atmosphere" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="hero-brand">Dashday</p>
+          <h1 class="hero-line">Dein Tag, klar geordnet.</h1>
+          <p class="hero-sub">
+            Offline-first To-dos für iOS und macOS — chronologisch, ruhig, ohne Ballast.
+          </p>
+          <div class="cta-row">
+            <a class="button button-primary" href="#about">Mehr erfahren</a>
+            <a class="button button-ghost" href="/privacy/">Datenschutz</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h2>Ein Tag. Eine Liste.</h2>
+        <p>
+          Dashday hält Aufgaben nach Tagen — Heute, Morgen, später. Lokal auf dem Gerät,
+          optional mit Sync über mehrere Geräte. Kein Feed, keine Gamification.
+        </p>
+        <p class="section-note">
+          Die App ist in TestFlight / Vorbereitung für den App Store. Fragen:
+          <a href="mailto:hello@dashday.io">hello@dashday.io</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Dashday</span>
+      <span>
+        <a href="/privacy/">Privacy Policy</a>
+        ·
+        <a href="mailto:hello@dashday.io">hello@dashday.io</a>
+      </span>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+      const header = document.getElementById("site-header");
+      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    </script>
+  </body>
+</html>
