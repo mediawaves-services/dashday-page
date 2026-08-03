@@ -1,0 +1,4 @@
+{
+  "subject": "Dein Bestätigungscode – Dashday",
+  "html": "<p>Dein Bestätigungscode lautet <strong>{{TOKEN}}</strong>.</p>"
+}

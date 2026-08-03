@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "templates": [
+    "signup.en.json",
+    "invite.en.json",
+    "magiclink.en.json",
+    "recovery.en.json",
+    "email_change.en.json",
+    "email_change_new.en.json",
+    "reauthentication.en.json",
+    "signup.de.json",
+    "invite.de.json",
+    "magiclink.de.json",
+    "recovery.de.json",
+    "email_change.de.json",
+    "email_change_new.de.json",
+    "reauthentication.de.json"
+  ],
+  "note": "Fetched by Supabase send-auth-email Edge Function only."
+}

@@ -6,6 +6,7 @@ Statische Website für [dashday.io](https://dashday.io).
 |------|--------|
 | `/` | Landing |
 | `/privacy/` | Privacy Policy (DE/EN) |
+| `/assets/_m/a9f3e1c7/` | Auth-Mail Templates (JSON, von Edge Function geladen) |
 
 Privacy-URL für Store / Google OAuth: `https://dashday.io/privacy/`
 
