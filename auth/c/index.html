@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashday — E-Mail bestätigen</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#000a24" />
+    <link rel="canonical" href="https://dashday.io/auth/c/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      .auth-card {
+        max-width: 28rem;
+        margin: 4rem auto 3rem;
+        padding: 1.75rem 1.5rem 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(10, 20, 56, 0.55);
+        box-shadow: 0 18px 48px var(--shadow);
+      }
+      .auth-card h1 {
+        font-family: var(--font-display);
+        font-size: 1.55rem;
+        margin: 0 0 0.65rem;
+      }
+      .auth-card p {
+        color: var(--ink-soft);
+        margin: 0 0 1rem;
+      }
+      .auth-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-top: 1.25rem;
+      }
+      .auth-actions button,
+      .auth-actions a.btn {
+        appearance: none;
+        border: 0;
+        border-radius: 0.75rem;
+        padding: 0.85rem 1.1rem;
+        font: inherit;
+        font-weight: 700;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .auth-actions .primary {
+        color: #fff;
+        background: var(--gradient);
+      }
+      .auth-actions .secondary {
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--line);
+      }
+      .auth-actions button:disabled {
+        opacity: 0.55;
+        cursor: wait;
+      }
+      .auth-status {
+        margin-top: 1rem;
+        min-height: 1.4em;
+        font-size: 0.95rem;
+      }
+      .auth-status[data-kind="ok"] {
+        color: #8dffb0;
+      }
+      .auth-status[data-kind="err"] {
+        color: #ff9aa8;
+      }
+      .auth-status[data-kind="info"] {
+        color: var(--ink-soft);
+      }
+      .auth-password {
+        display: none;
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+      .auth-password.visible {
+        display: flex;
+      }
+      .auth-password input {
+        border-radius: 0.65rem;
+        border: 1px solid var(--line);
+        background: rgba(0, 0, 0, 0.25);
+        color: var(--ink);
+        padding: 0.7rem 0.8rem;
+        font: inherit;
+      }
+      .auth-meta {
+        margin-top: 1.25rem;
+        font-size: 0.8rem;
+        color: var(--ink-faint);
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/">Dashday</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/privacy/">Privacy</a>
+        <a href="/impressum/">Impressum</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="auth-card" id="auth-card">
+        <h1 id="title">E-Mail bestätigen</h1>
+        <p id="lead">
+          Tippe auf Bestätigen, um fortzufahren. Der Link wird erst dann eingelöst
+          (sicher gegen automatische Mail-Scanner).
+        </p>
+        <div class="auth-actions">
+          <button type="button" class="primary" id="btn-confirm">Bestätigen</button>
+          <a class="btn secondary" id="btn-open-app" href="#">In Dashday öffnen</a>
+        </div>
+        <div class="auth-password" id="password-panel">
+          <p id="password-lead">Wähle ein neues Passwort für dein Dashday-Konto.</p>
+          <input id="password" type="password" autocomplete="new-password" minlength="6" placeholder="Neues Passwort" />
+          <input id="password2" type="password" autocomplete="new-password" minlength="6" placeholder="Passwort wiederholen" />
+          <button type="button" class="primary" id="btn-save-password">Passwort speichern</button>
+        </div>
+        <p class="auth-status" id="status" data-kind="info" aria-live="polite"></p>
+        <p class="auth-meta" id="meta"></p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js"></script>
+    <script>
+      (function () {
+        var SUPABASE_URL = "https://fspgfijzyvludkxiwogn.supabase.co";
+        var SUPABASE_ANON_KEY =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzcGdmaWp6eXZsdWRreGl3b2duIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0NDc2NTQsImV4cCI6MjEwMTAyMzY1NH0.IDo9I5Onnc1Qr1vW9D2zdM1uKysfpoalYH4BPuUpjuQ";
+
+        var params = new URLSearchParams(window.location.search);
+        var tokenHash = params.get("token_hash") || "";
+        var type = (params.get("type") || "signup").toLowerCase();
+        var lang = (navigator.language || "de").toLowerCase().startsWith("de")
+          ? "de"
+          : "en";
+
+        var copy = {
+          de: {
+            titleSignup: "E-Mail bestätigen",
+            titleRecovery: "Passwort zurücksetzen",
+            titleOther: "Dashday öffnen",
+            lead:
+              "Tippe auf Bestätigen, um fortzufahren. Der Link wird erst dann eingelöst (sicher gegen automatische Mail-Scanner).",
+            confirm: "Bestätigen",
+            openApp: "In Dashday öffnen",
+            missing: "In diesem Link fehlt ein gültiger token_hash.",
+            working: "Wird bestätigt…",
+            okSignup: "E-Mail bestätigt. Du kannst dich in der Dashday-App anmelden.",
+            okRecovery: "Link bestätigt. Setze jetzt ein neues Passwort.",
+            okOther: "Bestätigt.",
+            err: "Bestätigung fehlgeschlagen. Der Link ist abgelaufen oder wurde schon verwendet.",
+            openHint: "Wenn Dashday auf diesem Gerät installiert ist, öffnet der Link die App.",
+            passwordLead: "Wähle ein neues Passwort für dein Dashday-Konto.",
+            savePassword: "Passwort speichern",
+            passwordMismatch: "Die Passwörter stimmen nicht überein.",
+            passwordShort: "Mindestens 6 Zeichen.",
+            passwordSaved: "Passwort gespeichert. Du kannst dich in der App anmelden.",
+          },
+          en: {
+            titleSignup: "Confirm your email",
+            titleRecovery: "Reset your password",
+            titleOther: "Open Dashday",
+            lead:
+              "Tap Confirm to continue. The link is only redeemed then (safe against automated mail scanners).",
+            confirm: "Confirm",
+            openApp: "Open in Dashday",
+            missing: "This link is missing a valid token_hash.",
+            working: "Confirming…",
+            okSignup: "Email confirmed. You can sign in in the Dashday app.",
+            okRecovery: "Link confirmed. Choose a new password now.",
+            okOther: "Confirmed.",
+            err: "Confirmation failed. The link expired or was already used.",
+            openHint: "If Dashday is installed on this device, the link opens the app.",
+            passwordLead: "Choose a new password for your Dashday account.",
+            savePassword: "Save password",
+            passwordMismatch: "Passwords do not match.",
+            passwordShort: "At least 6 characters.",
+            passwordSaved: "Password saved. You can sign in in the app.",
+          },
+        }[lang];
+
+        var titleEl = document.getElementById("title");
+        var leadEl = document.getElementById("lead");
+        var btnConfirm = document.getElementById("btn-confirm");
+        var btnOpen = document.getElementById("btn-open-app");
+        var statusEl = document.getElementById("status");
+        var metaEl = document.getElementById("meta");
+        var passwordPanel = document.getElementById("password-panel");
+        var passwordLead = document.getElementById("password-lead");
+        var btnSavePassword = document.getElementById("btn-save-password");
+
+        document.documentElement.lang = lang;
+        if (type === "recovery") titleEl.textContent = copy.titleRecovery;
+        else if (type === "signup" || type === "invite" || type === "email")
+          titleEl.textContent = copy.titleSignup;
+        else titleEl.textContent = copy.titleOther;
+        leadEl.textContent = copy.lead;
+        btnConfirm.textContent = copy.confirm;
+        btnOpen.textContent = copy.openApp;
+        passwordLead.textContent = copy.passwordLead;
+        btnSavePassword.textContent = copy.savePassword;
+        metaEl.textContent = tokenHash
+          ? "type=" + type
+          : copy.missing;
+
+        var deepLink =
+          "dashday://auth/callback?token_hash=" +
+          encodeURIComponent(tokenHash) +
+          "&type=" +
+          encodeURIComponent(type);
+        btnOpen.href = deepLink;
+
+        function setStatus(kind, text) {
+          statusEl.dataset.kind = kind;
+          statusEl.textContent = text;
+        }
+
+        var client = null;
+        function getClient() {
+          if (client) return client;
+          client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
+          });
+          return client;
+        }
+
+        function mapType(t) {
+          if (t === "recovery") return "recovery";
+          if (t === "invite") return "invite";
+          if (t === "magiclink") return "magiclink";
+          if (t === "email_change") return "email_change";
+          if (t === "email") return "email";
+          return "signup";
+        }
+
+        btnConfirm.addEventListener("click", async function () {
+          if (!tokenHash) {
+            setStatus("err", copy.missing);
+            return;
+          }
+          btnConfirm.disabled = true;
+          setStatus("info", copy.working);
+          try {
+            var result = await getClient().auth.verifyOtp({
+              token_hash: tokenHash,
+              type: mapType(type),
+            });
+            if (result.error) throw result.error;
+            if (type === "recovery") {
+              setStatus("ok", copy.okRecovery);
+              passwordPanel.classList.add("visible");
+            } else if (type === "signup" || type === "invite" || type === "email") {
+              setStatus("ok", copy.okSignup);
+            } else {
+              setStatus("ok", copy.okOther);
+            }
+          } catch (e) {
+            setStatus("err", copy.err);
+            btnConfirm.disabled = false;
+          }
+        });
+
+        btnOpen.addEventListener("click", function () {
+          setStatus("info", copy.openHint);
+        });
+
+        btnSavePassword.addEventListener("click", async function () {
+          var p1 = document.getElementById("password").value || "";
+          var p2 = document.getElementById("password2").value || "";
+          if (p1.length < 6) {
+            setStatus("err", copy.passwordShort);
+            return;
+          }
+          if (p1 !== p2) {
+            setStatus("err", copy.passwordMismatch);
+            return;
+          }
+          btnSavePassword.disabled = true;
+          try {
+            var result = await getClient().auth.updateUser({ password: p1 });
+            if (result.error) throw result.error;
+            setStatus("ok", copy.passwordSaved);
+          } catch (e) {
+            setStatus("err", (e && e.message) || copy.err);
+            btnSavePassword.disabled = false;
+          }
+        });
+
+        if (!tokenHash) {
+          btnConfirm.disabled = true;
+          btnOpen.removeAttribute("href");
+          setStatus("err", copy.missing);
+        }
+      })();
+    </script>
+  </body>
+</html>

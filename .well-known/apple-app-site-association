@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "FZUXDU546A.io.dashday.Dashday",
+        "paths": ["/auth/*"]
+      }
+    ]
+  }
+}
