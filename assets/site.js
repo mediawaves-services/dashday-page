@@ -17,15 +17,24 @@
 
   if (!nav.id) nav.id = "site-nav";
   toggle.setAttribute("aria-controls", nav.id);
+  toggle.setAttribute("type", "button");
 
   var setOpen = function (open) {
-    header.classList.toggle("is-nav-open", open);
+    header.classList.toggle("is-nav-open", !!open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    document.documentElement.classList.toggle("nav-open", !!open);
   };
 
-  toggle.addEventListener("click", function () {
+  var toggleMenu = function (e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setOpen(!header.classList.contains("is-nav-open"));
-  });
+  };
+
+  // click covers mouse + iOS tap; avoid relying on :hover alone
+  toggle.addEventListener("click", toggleMenu);
 
   nav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
@@ -36,6 +45,16 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") setOpen(false);
   });
+
+  document.addEventListener(
+    "click",
+    function (e) {
+      if (!header.classList.contains("is-nav-open")) return;
+      if (header.contains(e.target)) return;
+      setOpen(false);
+    },
+    true
+  );
 
   window.addEventListener(
     "resize",
