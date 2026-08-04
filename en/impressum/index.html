@@ -25,7 +25,16 @@
   <body>
     <header class="site-header" id="site-header">
       <a class="brand" href="/en/">Dashday</a>
-      <nav class="nav" aria-label="Primary">
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Menu"
+      >
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" aria-label="Primary" id="site-nav">
         <a href="/en/#tag">Product</a>
         <a href="/en/support/">Support</a>
         <a href="/en/privacy/">Privacy</a>
@@ -89,6 +98,7 @@
       </span>
     </footer>
     <script src="../../assets/i18n.js" defer></script>
-    <script src="../../assets/contact.js" defer></script>
+    <script src="../../assets/site.js" defer></script>
+<script src="../../assets/contact.js" defer></script>
   </body>
 </html>

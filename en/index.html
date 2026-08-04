@@ -35,7 +35,16 @@
   <body>
     <header class="site-header" id="site-header">
       <a class="brand" href="/en/">Dashday</a>
-      <nav class="nav" aria-label="Primary">
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Menu"
+      >
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" aria-label="Primary" id="site-nav">
         <a href="#tag">Product</a>
         <a href="#apple">Apple</a>
         <a href="/en/support/">Support</a>
