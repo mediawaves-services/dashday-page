@@ -2,6 +2,29 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Demo video: play when scrolled into view, pause when leaving.
+  var demoVideos = document.querySelectorAll("video[data-autoplay-on-scroll]");
+  if (demoVideos.length && "IntersectionObserver" in window) {
+    var demoObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var video = entry.target;
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+            video.muted = true;
+            var play = video.play();
+            if (play && typeof play.catch === "function") play.catch(function () {});
+          } else if (!entry.isIntersecting) {
+            video.pause();
+          }
+        });
+      },
+      { threshold: [0, 0.45, 0.75] }
+    );
+    demoVideos.forEach(function (video) {
+      demoObserver.observe(video);
+    });
+  }
+
   var header = document.getElementById("site-header");
   if (!header) return;
 
