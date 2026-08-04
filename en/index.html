@@ -3,15 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashday — Your day, clearly ordered</title>
+    <title>Dashday — Offline-first to-do app for iPhone, iPad, Mac &amp; Watch</title>
     <meta
       name="description"
-      content="Dashday: offline-first to-dos for iPhone, iPad, Mac, and Apple Watch. Today &amp; tomorrow, clearly sorted — with Siri, widgets, Action Button, and an on-device morning briefing."
+      content="Dashday is the offline-first to-do app for Apple: Today &amp; Tomorrow, clearly ordered. With Siri, Apple Watch, widgets, Action Button, and an on-device morning briefing. Optional sync."
     />
+    <meta
+      name="keywords"
+      content="Dashday, todo app, to-do, tasks, offline, Apple Watch, Siri, widget, Action Button, iPhone, iPad, Mac, productivity"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="author" content="mediawaves services GmbH" />
     <link rel="canonical" href="https://dashday.io/en/" />
     <link rel="alternate" hreflang="de" href="https://dashday.io/de/" />
     <link rel="alternate" hreflang="en" href="https://dashday.io/en/" />
     <link rel="alternate" hreflang="x-default" href="https://dashday.io/" />
+    <meta property="og:site_name" content="Dashday" />
     <meta property="og:title" content="Dashday — Your day, clearly ordered" />
     <meta
       property="og:description"
@@ -21,6 +28,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://dashday.io/assets/icon-512.png" />
     <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dashday — Your day, clearly ordered" />
+    <meta
+      name="twitter:description"
+      content="Offline-first to-dos for iPhone, iPad, Mac, and Watch."
+    />
+    <meta name="twitter:image" content="https://dashday.io/assets/icon-512.png" />
     <meta name="theme-color" content="#000a24" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,20 +45,59 @@
     <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://dashday.io/#website",
+            "url": "https://dashday.io/",
+            "name": "Dashday",
+            "alternateName": ["Dashday App", "Dashday Todo"],
+            "inLanguage": ["de", "en"],
+            "publisher": { "@id": "https://dashday.io/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://dashday.io/#organization",
+            "name": "mediawaves services GmbH",
+            "url": "https://dashday.io/",
+            "logo": "https://dashday.io/assets/icon-512.png"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Dashday",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "iOS, iPadOS, macOS, watchOS",
+            "description": "Offline-first to-do app for Apple devices. Today and tomorrow, clearly ordered — with Siri, Watch, widgets, and Action Button.",
+            "url": "https://dashday.io/en/",
+            "image": "https://dashday.io/assets/icon-512.png",
+            "author": { "@id": "https://dashday.io/#organization" },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "name": "Dashday Demo",
+            "description": "A quick look at Dashday’s day stream, Apple integrations, and capture flow.",
+            "thumbnailUrl": "https://dashday.io/assets/demo/poster.jpg",
+            "contentUrl": "https://dashday.io/assets/demo/dashday-demo.mp4",
+            "uploadDate": "2026-08-04",
+            "inLanguage": "en"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="site-header" id="site-header">
       <a class="brand" href="/en/">Dashday</a>
-      <button
-        type="button"
-        class="nav-toggle"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        aria-label="Menu"
-      >
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
-      </button>
-      <nav class="nav" aria-label="Primary" id="site-nav">
+      <nav class="nav" aria-label="Primary">
+        <a href="#demo">Demo</a>
         <a href="#tag">Product</a>
         <a href="#apple">Apple</a>
         <a href="/en/support/">Support</a>
@@ -66,24 +119,55 @@
             src="/assets/icon-512.png"
             width="512"
             height="512"
-            alt=""
+            alt="Dashday app icon"
           />
-          <p class="hero-brand">Dashday</p>
-          <h1 class="hero-line">Your day, clearly ordered.</h1>
+          <h1 class="hero-brand">Dashday</h1>
+          <p class="hero-line">Your day, clearly ordered.</p>
           <p class="hero-sub">
             Offline-first to-dos for iPhone, iPad, Mac, and Watch — chronological, calm, no clutter.
           </p>
-          <div class="cta-row">
-            <a class="button button-primary" href="#tag">Learn more</a>
-            <a
-              class="button button-ghost"
-              data-mail="support"
-              data-label="Request TestFlight"
-              data-subject="Dashday TestFlight"
-              href="#"
-              >Request TestFlight</a
-            >
+          <div class="cta-row cta-store">
+            <div data-store-live hidden>
+              <a
+                class="store-badge"
+                data-store-ios
+                href="https://apps.apple.com/app/id6796732065"
+                rel="noopener"
+              >
+                <img
+                  src="/assets/badge-app-store-en.svg"
+                  width="180"
+                  height="54"
+                  alt="Download on the App Store"
+                />
+              </a>
+            </div>
+            <div data-store-soon>
+              <a class="button button-primary button-store-soon" href="#cta">
+                Coming to the App Store
+              </a>
+            </div>
+            <a class="button button-ghost" href="#demo">Watch demo</a>
           </div>
+        </div>
+      </section>
+
+      <section class="section section-demo" id="demo" aria-label="Dashday demo">
+        <h2>Dashday in 12 seconds</h2>
+        <p class="lead">
+          Day stream, Apple integrations, and fast capture — without the clutter.
+        </p>
+        <div class="demo-frame">
+          <video
+            class="demo-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="/assets/demo/poster.jpg"
+            title="Dashday demo"
+          >
+            <source src="/assets/demo/dashday-demo.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
@@ -120,11 +204,11 @@
           </li>
           <li>
             <span class="surface-name">Action Button</span>
-            <span class="surface-desc">One press → microphone. Speak, pause, todo saved.</span>
+            <span class="surface-desc">One press → mic. Speak, pause, todo saved.</span>
           </li>
           <li>
             <span class="surface-name">Home &amp; Lock Screen widgets</span>
-            <span class="surface-desc">Today’s open todos. Complete in place, without launching the app.</span>
+            <span class="surface-desc">Today’s open todos. Complete them without launching the app.</span>
           </li>
           <li>
             <span class="surface-name">Share</span>
@@ -136,7 +220,7 @@
           </li>
           <li>
             <span class="surface-name">Apple Intelligence</span>
-            <span class="surface-desc">Optional morning briefing — on-device summary, no server required.</span>
+            <span class="surface-desc">Optional morning briefing — summary on-device, no cloud AI required.</span>
           </li>
         </ul>
       </section>
@@ -144,9 +228,9 @@
       <section class="section section-wide" id="briefing">
         <h2>A quiet start</h2>
         <p class="lead">
-          At the time you choose, a short on-device summary of your open days.
-          Notifications only if you want them. No cloud-AI requirement —
-          Foundation Models on device when Apple Intelligence is available.
+          At the time you choose, a short local summary of your open days.
+          Notifications only if you want them. No cloud-AI mandate —
+          Foundation Models on device when Apple Intelligence is ready.
         </p>
       </section>
 
@@ -164,12 +248,31 @@
 
       <section class="section section-wide section-closing" id="cta">
         <h2>Ready for your day?</h2>
-        <p class="lead">
+        <p class="lead" data-store-soon>
           Dashday is on TestFlight and preparing for the App Store.
         </p>
-        <div class="cta-row cta-row-static">
+        <p class="lead" data-store-live hidden>
+          Get Dashday free on the App Store — for iPhone, iPad, Mac, and Watch.
+        </p>
+        <div class="cta-row cta-row-static cta-store">
+          <div data-store-live hidden>
+            <a
+              class="store-badge store-badge-lg"
+              data-store-ios
+              href="https://apps.apple.com/app/id6796732065"
+              rel="noopener"
+            >
+              <img
+                src="/assets/badge-app-store-en.svg"
+                width="220"
+                height="66"
+                alt="Download on the App Store"
+              />
+            </a>
+          </div>
           <a
-            class="button button-primary"
+            class="button button-primary button-store-soon"
+            data-store-soon
             data-mail="support"
             data-label="Request TestFlight"
             data-subject="Dashday TestFlight"
@@ -194,6 +297,8 @@
       </span>
     </footer>
 
+    <script src="/assets/store-config.js"></script>
+    <script src="/assets/store.js" defer></script>
     <script src="/assets/i18n.js" defer></script>
     <script src="/assets/contact.js" defer></script>
     <script src="/assets/site.js" defer></script>

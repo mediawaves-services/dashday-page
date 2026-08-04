@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://dashday.io/de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dashday.io/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dashday.io/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/de/support/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/support/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/support/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/en/support/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/support/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/support/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/de/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/privacy/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dashday.io/de/privacy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dashday.io/en/privacy/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/de/impressum/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dashday.io/en/impressum/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

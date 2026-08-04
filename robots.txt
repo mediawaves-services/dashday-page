@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Prefer locale landing pages over the root language switch.
+Sitemap: https://dashday.io/sitemap.xml
