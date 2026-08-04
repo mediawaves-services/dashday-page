@@ -243,7 +243,7 @@ a:hover {
   place-items: center;
   overflow: hidden;
   isolation: isolate;
-  padding: 5rem 1.5rem 4rem;
+  padding: 5.5rem 1.5rem 3.5rem;
 }
 
 .hero-atmosphere {
@@ -270,6 +270,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hero-inner-wide {
+  width: min(100%, 42rem);
 }
 
 .hero-icon {
@@ -302,17 +306,30 @@ a:hover {
 
 .hero-brand {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 11vw, 5.6rem);
+  font-size: clamp(2.75rem, 9vw, 4.75rem);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.95;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.35rem;
   background: var(--gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   opacity: 0;
-  animation: rise 0.9s var(--ease) 0.18s forwards;
+  animation: rise 0.9s var(--ease) 0.12s forwards;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 4.2vw, 2.35rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  max-width: 18ch;
+  margin: 0 0 1.35rem;
+  color: var(--ink);
+  opacity: 0;
+  animation: rise 0.9s var(--ease) 0.28s forwards;
 }
 
 .hero-line {
@@ -326,11 +343,22 @@ a:hover {
 }
 
 .hero-sub {
-  margin: 0 0 2rem;
+  margin: 0 0 2.25rem;
   color: var(--ink-soft);
-  max-width: 36ch;
+  max-width: 28ch;
+  font-size: clamp(1.05rem, 2.1vw, 1.2rem);
+  line-height: 1.55;
   opacity: 0;
-  animation: rise 0.9s var(--ease) 0.45s forwards;
+  animation: rise 0.9s var(--ease) 0.42s forwards;
+}
+
+.platforms {
+  margin: 1rem 0 0;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-faint);
+  opacity: 0;
+  animation: rise 0.9s var(--ease) 0.7s forwards;
 }
 
 .cta-row {
@@ -339,7 +367,7 @@ a:hover {
   justify-content: center;
   gap: 0.75rem 1rem;
   opacity: 0;
-  animation: rise 0.9s var(--ease) 0.58s forwards;
+  animation: rise 0.9s var(--ease) 0.55s forwards;
 }
 
 @keyframes rise {
@@ -395,9 +423,9 @@ a:hover {
 }
 
 .section {
-  width: min(100% - 3rem, 40rem);
+  width: min(100% - 3rem, 34rem);
   margin: 0 auto;
-  padding: 4.5rem 0 1rem;
+  padding: 7.5rem 0 0;
   text-align: center;
 }
 
@@ -407,15 +435,16 @@ a:hover {
 }
 
 .section-closing {
-  padding-bottom: 2rem;
+  padding: 9rem 0 5rem;
 }
 
 .section h2 {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(2rem, 5.5vw, 3rem);
   font-weight: 650;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.85rem;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  margin: 0 0 1.25rem;
 }
 
 .section p {
@@ -425,10 +454,67 @@ a:hover {
 
 .section .lead {
   margin: 0 auto;
-  max-width: 42ch;
+  max-width: 36ch;
   font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-  line-height: 1.6;
-  color: var(--ink-soft);
+}
+
+.punch {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 2.5rem !important;
+}
+
+.beat {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 28ch;
+  margin: 0 auto;
+}
+
+.beat > p {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.1vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.soft-list {
+  color: var(--ink) !important;
+  font-weight: 500;
+  line-height: 1.7 !important;
+}
+
+.soft-list-wide {
+  max-width: 16ch;
+  margin-inline: auto;
+}
+
+.emphasis {
+  color: var(--ink) !important;
+  font-weight: 600;
+}
+
+.closing-headline {
+  font-size: clamp(2.2rem, 6.5vw, 3.6rem) !important;
+  max-width: 14ch;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.closing-sub {
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem) !important;
+  color: var(--ink-soft) !important;
+  margin: 0 auto 2.5rem !important;
+  max-width: 28ch;
+}
+
+.section-closing .platforms {
+  opacity: 1;
+  animation: none;
 }
 
 .section-note {
@@ -601,8 +687,9 @@ a:hover {
 }
 
 .section-demo {
-  width: min(100% - 2rem, 26rem);
-  padding-top: 2.5rem;
+  width: min(100% - 2rem, 24rem);
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 .demo-frame {
@@ -666,9 +753,11 @@ a:hover {
   .hero-atmosphere,
   .hero-icon,
   .hero-brand,
+  .hero-headline,
   .hero-line,
   .hero-sub,
   .cta-row,
+  .platforms,
   .surface-list li {
     animation: none !important;
     opacity: 1 !important;
