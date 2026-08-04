@@ -456,6 +456,8 @@ a:hover {
   margin: 0 auto;
   max-width: 36ch;
   font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
 
 .punch {
