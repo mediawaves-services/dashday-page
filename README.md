@@ -5,11 +5,15 @@ Statische Website für [dashday.io](https://dashday.io).
 | Path | Inhalt |
 |------|--------|
 | `/` | Landing (USPs + Apple-Integrationen) |
+| `/support/` | Support-FAQ (DE/EN), Kontakt per JS |
 | `/privacy/` | Privacy Policy (DE/EN) |
-| `/impressum/` | Impressum |
+| `/impressum/` | Impressum (Support-Mail per JS) |
 | `/assets/_m/a9f3e1c7/` | Auth-Mail Templates (JSON, von Edge Function geladen) |
 
-Privacy-URL für Store / Google OAuth: `https://dashday.io/privacy/`
+Privacy-URL: `https://dashday.io/privacy/`  
+Support-URL: `https://dashday.io/support/`
+
+Die Adresse `hello@dashday.io` wird in `assets/contact.js` zur Laufzeit zusammengesetzt (`[data-mail=support]`), damit sie nicht als Klartext-`mailto` im HTML steht.
 
 ## GitHub Pages
 

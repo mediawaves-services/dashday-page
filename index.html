@@ -34,6 +34,7 @@
       <nav class="nav" aria-label="Primary">
         <a href="#tag">Produkt</a>
         <a href="#apple">Apple</a>
+        <a href="/support/">Support</a>
         <a href="/privacy/">Privacy</a>
         <a href="/impressum/">Impressum</a>
       </nav>
@@ -57,7 +58,14 @@
           </p>
           <div class="cta-row">
             <a class="button button-primary" href="#tag">Mehr erfahren</a>
-            <a class="button button-ghost" href="mailto:hello@dashday.io">TestFlight anfragen</a>
+            <a
+              class="button button-ghost"
+              data-mail="support"
+              data-label="TestFlight anfragen"
+              data-subject="Dashday TestFlight"
+              href="#"
+              >TestFlight anfragen</a
+            >
           </div>
         </div>
       </section>
@@ -144,7 +152,14 @@
           Dashday ist in TestFlight und in Vorbereitung für den App Store.
         </p>
         <div class="cta-row cta-row-static">
-          <a class="button button-primary" href="mailto:hello@dashday.io?subject=Dashday%20TestFlight">TestFlight anfragen</a>
+          <a
+            class="button button-primary"
+            data-mail="support"
+            data-label="TestFlight anfragen"
+            data-subject="Dashday TestFlight"
+            href="#"
+            >TestFlight anfragen</a
+          >
           <a class="button button-ghost" href="/privacy/">Datenschutz</a>
         </div>
       </section>
@@ -153,14 +168,17 @@
     <footer class="site-footer">
       <span>© <span id="year"></span> mediawaves services GmbH · Dashday</span>
       <span>
+        <a href="/support/">Support</a>
+        ·
         <a href="/privacy/">Privacy Policy</a>
         ·
         <a href="/impressum/">Impressum</a>
         ·
-        <a href="mailto:hello@dashday.io">hello@dashday.io</a>
+        <span data-mail="support"></span>
       </span>
     </footer>
 
+    <script src="assets/contact.js" defer></script>
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
       const header = document.getElementById("site-header");
