@@ -4,28 +4,27 @@ Statische Website für [dashday.io](https://dashday.io).
 
 | Path | Inhalt |
 |------|--------|
-| `/` | Landing (USPs + Apple-Integrationen) |
-| `/support/` | Support-FAQ (DE/EN), Kontakt per JS |
-| `/privacy/` | Privacy Policy (DE/EN) |
-| `/impressum/` | Impressum (Support-Mail per JS) |
-| `/assets/_m/a9f3e1c7/` | Auth-Mail Templates (JSON, von Edge Function geladen) |
+| `/` | Sprachweiche (Browser + gespeicherte Wahl → `/de/` oder `/en/`) |
+| `/de/`, `/en/` | Landing |
+| `/de/support/`, `/en/support/` | Support-FAQ |
+| `/de/privacy/`, `/en/privacy/` | Datenschutz / Privacy Policy |
+| `/de/impressum/`, `/en/impressum/` | Impressum (DE verbindlich, EN Kurzfassung) |
+| `/privacy/`, `/support/`, `/impressum/` | Legacy-Redirects auf die Locale-URLs |
+| `/auth/…`, `.well-known/…` | Auth / Universal Links (nicht lokalisiert) |
 
-Privacy-URL: `https://dashday.io/privacy/`  
-Support-URL: `https://dashday.io/support/`
+App Store / App-Links:
 
-Die Adresse `hello@dashday.io` wird in `assets/contact.js` zur Laufzeit zusammengesetzt (`[data-mail=support]`), damit sie nicht als Klartext-`mailto` im HTML steht.
+- DE Support: `https://dashday.io/de/support/`
+- EN Support: `https://dashday.io/en/support/`
+- DE Privacy: `https://dashday.io/de/privacy/`
+- EN Privacy: `https://dashday.io/en/privacy/`
+
+Alte URLs `/privacy/` und `/support/` leiten weiter (Browser-Sprache bzw. `localStorage`).
+
+Die Adresse `hello@dashday.io` wird in `assets/contact.js` zur Laufzeit zusammengesetzt (`[data-mail=support]`).
 
 ## GitHub Pages
 
 1. Settings → Pages → Source: **Deploy from a branch**
 2. Branch: `main`, folder: `/` (root)
 3. Custom domain: `dashday.io` (`CNAME` liegt im Repo)
-
-DNS für Apex typisch GitHub Pages A-Records:
-
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```

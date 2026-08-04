@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datenschutz — Dashday</title>
+    <meta name="description" content="Datenschutzerklärung für die Dashday-App und Website." />
+    <link rel="canonical" href="https://dashday.io/de/privacy/" />
+    <link rel="alternate" hreflang="de" href="https://dashday.io/de/privacy/" />
+    <link rel="alternate" hreflang="en" href="https://dashday.io/en/privacy/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="theme-color" content="#000a24" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/de/">Dashday</a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/de/#tag">Produkt</a>
+        <a href="/de/support/">Support</a>
+        <a href="/de/privacy/">Privacy</a>
+        <a href="/de/impressum/">Impressum</a>
+        <span class="lang-switch" role="group" aria-label="Sprache">
+          <a href="/de/privacy/" data-lang="de" aria-current="true">DE</a>
+          <a href="/en/privacy/" data-lang="en">EN</a>
+        </span>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1>Datenschutzerklärung</h1>
+      <p class="meta">Stand: 2. August 2026</p>
+
+      <p>
+        Diese Erklärung gilt für die App <strong>Dashday</strong> (iOS/macOS) und die Website
+        <strong>dashday.io</strong>. Verantwortliche Stelle:
+        <strong>mediawaves services GmbH</strong> /
+        <a href="mailto:privacy@dashday.io">privacy@dashday.io</a>.
+      </p>
+
+      <h2>1. Kurzfassung</h2>
+      <ul>
+        <li>Todos liegen standardmäßig <strong>lokal auf deinem Gerät</strong>.</li>
+        <li>Optionaler <strong>Sync</strong> speichert Aufgaben in unserem Supabase-Projekt (EU-fähig je nach Projektregion).</li>
+        <li>Optionales <strong>Google-Drive-Backup</strong> schreibt eine CSV in <em>dein</em> Google-Konto.</li>
+        <li>Diktat nutzt Apple-Spracherkennung bevorzugt <strong>on-device</strong>.</li>
+        <li>Wir verkaufen keine Daten und schalten keine Werbe-Tracker.</li>
+        <li>Sync-Konto kannst du in der App unter Einstellungen unwiderruflich löschen (inkl. Server-Todos).</li>
+      </ul>
+
+      <h2>2. Welche Daten verarbeiten wir?</h2>
+      <p><strong>Lokal (immer, App):</strong> Aufgabentitel, Notizen, Fälligkeitsdaten, Erledigt-Status, Wiederholungsregeln, Sortierung — in der SwiftData-Datenbank auf dem Gerät (inkl. App Group für Share/Siri).</p>
+      <p><strong>Konto &amp; Sync (optional):</strong> Wenn du dich anmeldest: E-Mail-Adresse und Authentifizierungsdaten über Supabase Auth; deine Todos (inkl. Metadaten wie Zeitstempel) in der Datenbanktabelle <code>todos</code>, geschützt durch Row Level Security (nur dein Benutzer).</p>
+      <p><strong>Backup (optional):</strong> Bei iCloud: CSV in einem von dir gewählten Ordner. Bei Google Drive: OAuth-Zugang mit eingeschränktem Scope (<code>drive.file</code>), Upload einer Backup-CSV in einen Dashday-Ordner in <em>deinem</em> Drive.</p>
+      <p><strong>Diktat (optional, iOS):</strong> Mikrofonzugriff und Spracherkennung, um Text für neue Aufgaben zu erzeugen. Kein eigener Speech-Server von Dashday.</p>
+      <p><strong>Website:</strong> Beim Aufruf von dashday.io können technisch übliche Server-/CDN-Logs entstehen (IP, User-Agent, Zeitpunkt). Wir setzen keine Analyse-Cookies für Tracking.</p>
+
+      <h2>3. Zwecke &amp; Rechtsgrundlagen</h2>
+      <p>
+        Bereitstellung der App-Funktionen (Vertrag/Nutzung), optionaler Sync und Backup auf deine Anweisung,
+        Sicherheit und Missbrauchsvermeidung. Soweit DSGVO gilt: Art. 6 Abs. 1 lit. b (Vertrag) bzw. lit. f (berechtigtes Interesse an stabilem Betrieb) bzw. Einwilligung bei optionalen Diensten.
+      </p>
+
+      <h2>4. Weitergabe an Auftragsverarbeiter</h2>
+      <ul>
+        <li><strong>Supabase</strong> — Auth und Todo-Sync (nur wenn Sync aktiv).</li>
+        <li><strong>Google</strong> — Sign-In / Drive-Upload (nur wenn du Google-Backup aktivierst).</li>
+        <li><strong>Apple</strong> — Geräteplattform, optional Spracherkennung, iCloud (wenn du iCloud-Backup wählst).</li>
+        <li><strong>GitHub Pages</strong> — Hosting dieser Website.</li>
+      </ul>
+      <p>Eine Weitergabe zu Werbezwecken findet nicht statt.</p>
+
+      <h2>5. Speicherdauer</h2>
+      <p>
+        Lokale Daten bleiben, bis du sie löschst oder die App / den Speicher zurücksetzt.
+        Sync-Daten bleiben in deinem Konto, bis du Todos löschst oder das Konto löschen lässt.
+        Backups in iCloud/Drive verwaltest du selbst.
+      </p>
+
+      <h2>6. Deine Rechte</h2>
+      <p>
+        Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch — soweit anwendbar.
+        Sync-Konto und Server-Todos löschst du in der App unter Einstellungen → Account löschen.
+        Kontakt: <a href="mailto:privacy@dashday.io">privacy@dashday.io</a>.
+        Beschwerde bei einer Datenschutzaufsichtsbehörde ist möglich.
+      </p>
+
+      <h2>7. Kinder</h2>
+      <p>Dashday richtet sich nicht an Kinder unter 13 Jahren (bzw. dem geltenden Mindestalter).</p>
+
+      <h2>8. Änderungen</h2>
+      <p>Wir können diese Erklärung aktualisieren. Das Datum oben zeigt die letzte Änderung.</p>
+    </main>
+
+    <footer class="site-footer">
+      <span><a href="/de/">← Dashday</a> · mediawaves services GmbH</span>
+      <span>
+        <a href="/de/support/">Support</a>
+        ·
+        <a href="/de/impressum/">Impressum</a>
+        ·
+        <a href="mailto:privacy@dashday.io">privacy@dashday.io</a>
+      </span>
+    </footer>
+    <script src="../../assets/i18n.js" defer></script>
+  </body>
+</html>

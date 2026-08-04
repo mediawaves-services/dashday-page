@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support — Dashday</title>
+    <meta name="description" content="Hilfe und FAQ zu Dashday — Sync, Account, Watch, Siri und mehr." />
+    <link rel="canonical" href="https://dashday.io/de/support/" />
+    <link rel="alternate" hreflang="de" href="https://dashday.io/de/support/" />
+    <link rel="alternate" hreflang="en" href="https://dashday.io/en/support/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="theme-color" content="#000a24" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/de/">Dashday</a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="/de/#tag">Produkt</a>
+        <a href="/de/support/">Support</a>
+        <a href="/de/privacy/">Privacy</a>
+        <a href="/de/impressum/">Impressum</a>
+        <span class="lang-switch" role="group" aria-label="Sprache">
+          <a href="/de/support/" data-lang="de" aria-current="true">DE</a>
+          <a href="/en/support/" data-lang="en">EN</a>
+        </span>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1>Support</h1>
+      <p class="meta">FAQ · Stand: 4. August 2026</p>
+
+      <p>
+        Kurze Antworten zu den häufigsten Fragen rund um <strong>Dashday</strong>.
+        Wenn du hier nicht weiterkommst, schreib uns — siehe unten.
+      </p>
+
+      <h2>Wo werden meine Todos gespeichert?</h2>
+      <p>
+        Standardmäßig <strong>nur auf dem Gerät</strong> (SwiftData). Optionaler Cloud-Sync
+        legt sie zusätzlich in unserem Supabase-Projekt ab — geschützt durch Row Level Security,
+        sodass nur dein Konto darauf zugreifen kann.
+      </p>
+
+      <h2>Muss ich ein Konto anlegen?</h2>
+      <p>
+        Nein. Ohne Anmeldung funktioniert Dashday offline-first. Ein Konto brauchst du nur,
+        wenn du Sync zwischen iPhone, iPad, Mac und Watch nutzen willst.
+      </p>
+
+      <h2>Wie lösche ich mein Sync-Konto?</h2>
+      <p>
+        In der App unter <strong>Einstellungen → Account löschen</strong>. Dabei werden
+        Server-Todos und das Auth-Konto unwiderruflich entfernt. Lokale Todos kannst du
+        beim Abmelden optional behalten oder löschen.
+      </p>
+
+      <h2>Apple Watch, Siri, Widgets &amp; Action Button</h2>
+      <p>
+        Die Watch-App erlaubt Diktat und Speichern auch ohne iPhone in der Hand.
+        Siri/Shortcuts („Dashday“, „für morgen …“), Home-/Lock-Screen-Widgets und der
+        Action Button (Mikrofon) sind in den Einstellungen der App und von iOS beschrieben.
+        Spotlight indexiert offene Todos lokal.
+      </p>
+
+      <h2>Was ist das KI-Morgen-Briefing?</h2>
+      <p>
+        Eine optionale, <strong>lokale</strong> Zusammenfassung offener Todos zur gewählten
+        Uhrzeit — auf dem Gerät mit Apple Intelligence / Foundation Models, ohne Server.
+        Du brauchst Mitteilungen und ein unterstütztes Gerät.
+      </p>
+
+      <h2>Backup nach iCloud oder Google Drive</h2>
+      <p>
+        Optionaler täglicher CSV-Export in einen von dir gewählten iCloud-Ordner oder per
+        Google OAuth (<code>drive.file</code>) in einen Dashday-Ordner in <em>deinem</em> Drive.
+        Die Dateien verwaltest du selbst.
+      </p>
+
+      <h2>Wiederholende Aufgaben</h2>
+      <p>
+        Bei Erledigung einer wiederkehrenden Aufgabe legt Dashday die nächste Instanz an.
+        Frequenz und Serie stellst du in den Todo-Details ein.
+      </p>
+
+      <h2>Passwort vergessen / E-Mail nicht bestätigt</h2>
+      <p>
+        Unter Einstellungen → Anmelden findest du „Passwort vergessen?“ und bei Bedarf
+        „Bestätigung erneut senden“. Der Link in der Mail öffnet Dashday (oder die Website
+        als Fallback).
+      </p>
+
+      <h2>Noch Fragen?</h2>
+      <p>
+        Wenn die FAQ nicht hilft, erreichst du uns unter
+        <span data-mail="support"></span>.
+        Bitte Geräte/OS und eine kurze Beschreibung mitschicken — wir melden uns so schnell
+        wie möglich.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <span><a href="/de/">← Dashday</a> · mediawaves services GmbH</span>
+      <span>
+        <a href="/de/privacy/">Privacy</a>
+        ·
+        <a href="/de/impressum/">Impressum</a>
+      </span>
+    </footer>
+    <script src="../../assets/i18n.js" defer></script>
+    <script src="../../assets/contact.js" defer></script>
+  </body>
+</html>
