@@ -14,19 +14,23 @@ Statische Website für [dashday.io](https://dashday.io).
 | `/assets/demo/` | Kurzes Demo-Video |
 | `/auth/…`, `.well-known/…` | Auth / Universal Links (nicht lokalisiert) |
 
-## App Store CTA
+## App Store / TestFlight CTA
 
-Sobald die App live ist, in `assets/store-config.js` setzen:
+In `assets/store-config.js`:
 
 ```js
 window.DashdayStore = {
-  iosUrl: "https://apps.apple.com/app/dashday/id6796732065",
+  iosUrl: null, // set when live on the App Store
   macUrl: null,
+  testFlightUrl: "https://testflight.apple.com/join/qQ1qYRTd",
   appId: "6796732065",
 };
 ```
 
-Ohne URL zeigt die Seite „Bald im App Store“ / TestFlight.
+- Mit `iosUrl`: App-Store-Badge
+- Sonst mit `testFlightUrl`: Button „Mit TestFlight testen“ (öffentlicher Join-Link — von Apple so vorgesehen)
+- Sonst: Mailto „Bald im App Store“
+
 
 ## SEO / Indexierung
 

@@ -57,8 +57,9 @@
       <h2>1. Summary</h2>
       <ul>
         <li>Todos are stored <strong>on your device</strong> by default.</li>
-        <li>Optional <strong>sync</strong> stores tasks in our Supabase project.</li>
-        <li>Optional <strong>Google Drive backup</strong> writes a CSV into <em>your</em> Google account.</li>
+        <li>Free optional <strong>backup</strong> (CSV) to iCloud or Google Drive — your files.</li>
+        <li>Optional <strong>sync</strong> (Dashday Plus) stores tasks in our Supabase project.</li>
+        <li>Optional <strong>in-app purchases / subscriptions</strong> (Dashday Plus) go through Apple; billing and cancellation via your Apple ID.</li>
         <li>Dictation uses Apple speech recognition, preferably <strong>on-device</strong>.</li>
         <li>We do not sell data or use ad trackers.</li>
         <li>You can permanently delete your sync account in the app settings (including server-side todos).</li>
@@ -66,7 +67,8 @@
 
       <h2>2. Data we process</h2>
       <p><strong>Local (app):</strong> task titles, notes, due dates, completion state, recurrence, ordering — in SwiftData on device (including the App Group for Share/Siri).</p>
-      <p><strong>Account &amp; sync (optional):</strong> email and auth via Supabase Auth; your todos in the <code>todos</code> table with row-level security (your user only).</p>
+      <p><strong>Account &amp; sync (optional):</strong> email and auth via Supabase Auth; with active Dashday Plus, your todos in the <code>todos</code> table with row-level security (your user only).</p>
+      <p><strong>Dashday Plus (optional):</strong> purchase and management via Apple (StoreKit). We receive subscription status from Apple to enable sync; Apple processes payment details.</p>
       <p><strong>Backup (optional):</strong> iCloud folder you choose, or Google Drive OAuth with <code>drive.file</code> scope to upload a CSV into a Dashday folder in your Drive.</p>
       <p><strong>Dictation (optional, iOS):</strong> microphone and speech recognition to create task text. Dashday does not run its own speech servers.</p>
       <p><strong>Website:</strong> standard host/CDN logs may include IP, user agent, and time. No analytics cookies for tracking.</p>

@@ -750,8 +750,16 @@ a:hover {
 }
 
 [data-store-live][hidden],
-[data-store-soon][hidden] {
+[data-store-soon][hidden],
+[data-store-testflight][hidden] {
   display: none !important;
+}
+
+.cta-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted, #5a6b7d);
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce) {

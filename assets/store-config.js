@@ -1,6 +1,6 @@
 /**
- * App Store links — set URLs when Dashday is live on the store.
- * Until then the site shows a large “Coming soon” CTA + TestFlight.
+ * App Store / TestFlight links.
+ * Public TestFlight join links are meant to be shared (Apple).
  *
  * iOS ASC app id: 6796732065
  */
@@ -9,5 +9,6 @@ window.DashdayStore = {
   iosUrl: null,
   // e.g. "https://apps.apple.com/app/dashday/id6796732065?platform=mac"
   macUrl: null,
+  testFlightUrl: "https://testflight.apple.com/join/qQ1qYRTd",
   appId: "6796732065",
 };
