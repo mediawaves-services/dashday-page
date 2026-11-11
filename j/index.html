@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashday — Einladung</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#000a24" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      .invite-card {
+        max-width: 28rem;
+        margin: 4rem auto 3rem;
+        padding: 1.75rem 1.5rem 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(10, 20, 56, 0.55);
+        box-shadow: 0 18px 48px var(--shadow);
+        text-align: center;
+      }
+      .invite-emoji {
+        font-size: 3rem;
+        line-height: 1;
+        margin-bottom: 0.75rem;
+      }
+      .invite-card h1 {
+        font-family: var(--font-display);
+        font-size: 1.55rem;
+        margin: 0 0 0.5rem;
+      }
+      .invite-card p {
+        color: var(--ink-soft);
+        margin: 0 0 1rem;
+      }
+      .invite-code {
+        display: inline-block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        padding: 0.55rem 0.9rem;
+        border-radius: 0.65rem;
+        border: 1px dashed var(--line);
+        margin: 0.25rem 0 1rem;
+        user-select: all;
+      }
+      .invite-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-top: 1rem;
+      }
+      .invite-actions a {
+        border-radius: 0.75rem;
+        padding: 0.85rem 1.1rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .invite-actions .primary {
+        color: #fff;
+        background: var(--gradient);
+      }
+      .invite-actions .secondary {
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+      .invite-hint {
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
+        color: var(--ink-faint);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <a class="brand" href="/">Dashday</a>
+    </header>
+
+    <main class="page">
+      <section class="invite-card">
+        <div class="invite-emoji" id="emoji">📋</div>
+        <h1 id="title">Einladung zu einer gemeinsamen Liste</h1>
+        <p id="lead"></p>
+        <div class="invite-code" id="code" hidden></div>
+        <div class="invite-actions">
+          <a class="primary" id="btn-open" href="#">In Dashday öffnen</a>
+          <a class="secondary" id="btn-store" href="https://apps.apple.com/app/id6796732065">Dashday laden</a>
+          <a class="secondary" id="btn-testflight" href="https://testflight.apple.com/join/qQ1qYRTd">TestFlight-Beta</a>
+        </div>
+        <p class="invite-hint" id="hint"></p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var SUPABASE_URL = "https://fspgfijzyvludkxiwogn.supabase.co";
+        var SUPABASE_ANON_KEY =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzcGdmaWp6eXZsdWRreGl3b2duIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0NDc2NTQsImV4cCI6MjEwMTAyMzY1NH0.IDo9I5Onnc1Qr1vW9D2zdM1uKysfpoalYH4BPuUpjuQ";
+
+        var lang = (navigator.language || "de").toLowerCase().startsWith("de") ? "de" : "en";
+        var copy = {
+          de: {
+            title: "Einladung zu einer gemeinsamen Liste",
+            titleNamed: "Einladung zu „%s“",
+            leadInviter: "%s lädt dich ein, die Liste gemeinsam in Dashday zu nutzen.",
+            lead: "Du wurdest eingeladen, eine Liste gemeinsam in Dashday zu nutzen.",
+            invalid: "Diese Einladung ist abgelaufen oder ungültig. Bitte frag nach einem neuen Link.",
+            missing: "In diesem Link fehlt der Einladungscode.",
+            open: "In Dashday öffnen",
+            store: "Dashday laden",
+            testflight: "TestFlight-Beta",
+            hint: "Schon installiert? Dann öffnet der Link die App direkt. Alternativ in Dashday unter Einstellungen › „Code eingeben“ diesen Code eintippen.",
+          },
+          en: {
+            title: "Invitation to a shared list",
+            titleNamed: "Invitation to “%s”",
+            leadInviter: "%s invites you to share this list in Dashday.",
+            lead: "You've been invited to share a list in Dashday.",
+            invalid: "This invitation has expired or is invalid. Please ask for a new link.",
+            missing: "This link is missing the invite code.",
+            open: "Open in Dashday",
+            store: "Get Dashday",
+            testflight: "TestFlight beta",
+            hint: "Already installed? The link opens the app directly. Or enter this code in Dashday under Settings › “Enter code”.",
+          },
+        }[lang];
+
+        function fmt(s, v) {
+          return s.replace("%s", v);
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var raw = params.get("c") || window.location.pathname.replace(/^\/j\/?/, "");
+        var code = (raw || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+        var titleEl = document.getElementById("title");
+        var leadEl = document.getElementById("lead");
+        var codeEl = document.getElementById("code");
+        var emojiEl = document.getElementById("emoji");
+        var openEl = document.getElementById("btn-open");
+
+        document.documentElement.lang = lang;
+        titleEl.textContent = copy.title;
+        leadEl.textContent = copy.lead;
+        openEl.textContent = copy.open;
+        document.getElementById("btn-store").textContent = copy.store;
+        document.getElementById("btn-testflight").textContent = copy.testflight;
+        document.getElementById("hint").textContent = copy.hint;
+
+        if (!code) {
+          leadEl.textContent = copy.missing;
+          openEl.hidden = true;
+          return;
+        }
+
+        codeEl.hidden = false;
+        codeEl.textContent = code.length > 5 ? code.slice(0, 5) + "-" + code.slice(5) : code;
+        openEl.href = "dashday://join?c=" + encodeURIComponent(code);
+
+        fetch(SUPABASE_URL + "/rest/v1/rpc/invite_preview", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: "Bearer " + SUPABASE_ANON_KEY,
+          },
+          body: JSON.stringify({ p_code: code }),
+        })
+          .then(function (r) {
+            return r.ok ? r.json() : null;
+          })
+          .then(function (preview) {
+            if (!preview || !preview.name) {
+              leadEl.textContent = copy.invalid;
+              openEl.hidden = true;
+              return;
+            }
+            if (preview.emoji) emojiEl.textContent = preview.emoji;
+            titleEl.textContent = fmt(copy.titleNamed, preview.name);
+            leadEl.textContent = preview.inviter_name
+              ? fmt(copy.leadInviter, preview.inviter_name)
+              : copy.lead;
+          })
+          .catch(function () {});
+      })();
+    </script>
+  </body>
+</html>
